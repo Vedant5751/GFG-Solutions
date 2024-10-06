@@ -4,16 +4,16 @@ public:
     int getSecondLargest(vector<int> &arr)
     {
         int large = arr[0];
+        int secondlarge = -1;
         for (int i = 0; i < arr.size(); i++)
         {
-            large = max(large, arr[i]);
-        }
-
-        int secondlarge = -1;
-        for (int j = 0; j < arr.size(); j++)
-        {
-            if (arr[j] != large && arr[j] < large)
-                secondlarge = max(secondlarge, arr[j]);
+            if(arr[i] > large){
+                secondlarge = large;
+                large = arr[i];
+                }
+            else if(arr[i] < large && arr[i] > secondlarge){
+                secondlarge = arr[i];
+            }
         }
         return secondlarge;
     }
